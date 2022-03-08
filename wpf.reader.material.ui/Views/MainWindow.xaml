@@ -28,21 +28,22 @@
 		Margin="0 0 0 0">
 		<StackPanel>
 			<TextBlock 
-				  Margin="0 16 12 8"
-				  FontSize="16">
-					Configurator
+				Margin="0 16 12 8"
+				FontSize="16">
+				Configurator
 			</TextBlock>
 
 			<Separator Style="{StaticResource MaterialDesignLightSeparator}" Background="LightGray" />
 
 			<StackPanel Margin="0 20 0 0">
-				<ComboBox materialDesign:HintAssist.Hint="Person" 
-						  ItemsSource="{Binding Path=Persons}"
-						  SelectedItem="{Binding Path=SelectedPerson}"
-						  DisplayMemberPath="Fullname"
-						  IsEditable="True" 
-						  Margin="0 5 0 0"
-						  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+				<ComboBox 
+					materialDesign:HintAssist.Hint="Person" 
+					ItemsSource="{Binding Path=Persons}"
+					SelectedItem="{Binding Path=SelectedPerson}"
+					DisplayMemberPath="Fullname"
+					IsEditable="True" 
+					Margin="0 5 0 0"
+					Style="{StaticResource MaterialDesignFloatingHintComboBox}">
 				</ComboBox>
 				
 				<TextBox
@@ -66,12 +67,13 @@
 					Margin="0 15 0 0" 
 					Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
-				<ComboBox materialDesign:HintAssist.Hint="Role" 
-						  ItemsSource="{Binding Path=SelectedPerson.Roles}"
-						  SelectedItem="{Binding Path=SelectedRole}"
-						  DisplayMemberPath="Name"
-						  IsEditable="True" Margin="0 15 0 0"
-						  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+				<ComboBox 
+					materialDesign:HintAssist.Hint="Role" 
+					ItemsSource="{Binding Path=SelectedPerson.Roles}"
+					SelectedItem="{Binding Path=SelectedRole}"
+					DisplayMemberPath="Name"
+					IsEditable="True" Margin="0 15 0 0"
+					Style="{StaticResource MaterialDesignFloatingHintComboBox}">
 				</ComboBox>
 
 				<Separator Style="{StaticResource MaterialDesignLightSeparator}" />
@@ -123,10 +125,8 @@
 												Command="materialDesign:DialogHost.CloseDialogCommand">
 												ACCEPT
 											</Button>
-
 										</Grid>
 									</Grid>
-
 								</StackPanel>
 							</StackPanel>
 						</materialDesign:DialogHost.DialogContent>
@@ -180,21 +180,19 @@
 												Margin="0 8 8 0" 
 												Command="materialDesign:DialogHost.CloseDialogCommand">
 												ACCEPT
-											</Button>
-											
+											</Button>											
 										</Grid>       
-									</Grid>
-									
+									</Grid>									
 								</StackPanel>
 							</StackPanel>
 						</materialDesign:DialogHost.DialogContent>
 
-						<Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
-								Style="{StaticResource MaterialDesignRaisedButton}"
-								Content="Cancel" 
-								HorizontalAlignment="Left" 
-								Margin="0,35,0,0" 
-								/>
+						<Button 
+							Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+							Style="{StaticResource MaterialDesignRaisedButton}"
+							Content="Cancel" 
+							HorizontalAlignment="Left" 
+							Margin="0,35,0,0"/>
 					</materialDesign:DialogHost>
 				</Grid>
 			</StackPanel>
