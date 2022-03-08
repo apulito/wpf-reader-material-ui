@@ -1,0 +1,50 @@
+﻿[
+  {
+    "id": 1,
+    "person": {
+      "id": 1,
+      "name": "John",
+      "surname": "Doe",
+      "phone": "123456789",
+      "roles": [
+        {
+          "name": "Software Engineer"
+        },
+        {
+          "name": "Web Developer"
+        }
+      ]
+    }      
+  },
+  {
+    "id": 2,
+    "person": {
+      "id": 2,
+      "name": "Giovanni",
+      "surname": "Verdi",
+      "phone": "123456789",
+      "roles": [
+        {
+          "name": "Web Design Engineer"
+        },
+        {
+          "name": "Web content manager"
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "person": {
+      "id": 3,
+      "name": "Mario",
+      "surname": "Rossi",
+      "phone": "123456789",
+      "roles": [
+        {
+          "name": "Game developer"
+        }
+      ]
+    }
+  }
+ ]

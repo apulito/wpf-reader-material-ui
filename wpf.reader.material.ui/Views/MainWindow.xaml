@@ -1,0 +1,204 @@
+﻿<Window x:Class="wpf.reader.material.ui.Views.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:wpf.reader.material.ui"
+		mc:Ignorable="d"
+		Title="Configurator" 
+		Height="550" 
+		Width="500" 
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		xmlns:viewModels="clr-namespace:wpf.reader.material.ui.ViewModels"
+		TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+		TextElement.FontWeight="Regular"
+		TextElement.FontSize="13"
+		TextOptions.TextFormattingMode="Ideal"
+		TextOptions.TextRenderingMode="Auto"
+		Background="{DynamicResource MaterialDesignPaper}"
+		FontFamily="{DynamicResource MaterialDesignFont}"
+		>
+	<Window.DataContext>
+		<viewModels:ConfiguratorViewModel/>
+	</Window.DataContext>
+	<materialDesign:Card 
+		Width="450" 
+		Height="450"
+		Padding="15" 
+		Margin="0 0 0 0">
+		<StackPanel>
+			<TextBlock 
+				  Margin="0 16 12 8"
+				  FontSize="16">
+					Configurator
+			</TextBlock>
+
+			<Separator Style="{StaticResource MaterialDesignLightSeparator}" Background="LightGray" />
+
+			<StackPanel Margin="0 20 0 0">
+				<ComboBox materialDesign:HintAssist.Hint="Person" 
+						  ItemsSource="{Binding Path=Persons}"
+						  SelectedItem="{Binding Path=SelectedPerson}"
+						  DisplayMemberPath="Fullname"
+						  IsEditable="True" 
+						  Margin="0 5 0 0"
+						  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+				</ComboBox>
+				
+				<TextBox
+					materialDesign:HintAssist.Hint="Name"
+					Text="{Binding Path=SelectedPerson.Name}"
+					IsEnabled="False"
+					Margin="0 15 0 0"
+					Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+				<TextBox
+					materialDesign:HintAssist.Hint="Surname" 
+					Text="{Binding Path=SelectedPerson.Surname}"
+					IsEnabled="False"
+					Margin="0 15 0 0"
+					Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+				<TextBox 
+					materialDesign:HintAssist.Hint="Phone" 
+					Text="{Binding Path=SelectedPerson.Phone}"
+					IsEnabled="False"
+					Margin="0 15 0 0" 
+					Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+				<ComboBox materialDesign:HintAssist.Hint="Role" 
+						  ItemsSource="{Binding Path=SelectedPerson.Roles}"
+						  SelectedItem="{Binding Path=SelectedRole}"
+						  DisplayMemberPath="Name"
+						  IsEditable="True" Margin="0 15 0 0"
+						  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+				</ComboBox>
+
+				<Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+
+					<materialDesign:DialogHost 
+						CloseOnClickAway="True" 
+						Grid.Column="0"
+						HorizontalAlignment="Left">
+						<materialDesign:DialogHost.DialogContent>
+							<StackPanel Margin="16">
+								<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+									<Grid>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto"></RowDefinition>
+											<RowDefinition Height="*"></RowDefinition>
+										</Grid.RowDefinitions>
+										<TextBlock 
+											Grid.Row="0"
+											HorizontalAlignment="Right">
+											Do you want to save the configuration?
+											<LineBreak></LineBreak>
+										</TextBlock>
+
+										<Grid Grid.Row="1">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*"></ColumnDefinition>
+												<ColumnDefinition Width="*"></ColumnDefinition>
+											</Grid.ColumnDefinitions>
+											<Button
+												Grid.Column="1"
+												Style="{StaticResource MaterialDesignFlatButton}"
+												IsCancel="True" 
+												Margin="0 8 8 0" 
+												Command="materialDesign:DialogHost.CloseDialogCommand">
+												CANCEL
+											</Button>
+
+											<Button					
+												Grid.Column="0"
+												Style="{StaticResource MaterialDesignFlatButton}" 
+												IsDefault="True"
+												Margin="0 8 8 0" 
+												Command="materialDesign:DialogHost.CloseDialogCommand">
+												ACCEPT
+											</Button>
+
+										</Grid>
+									</Grid>
+
+								</StackPanel>
+							</StackPanel>
+						</materialDesign:DialogHost.DialogContent>
+
+						<Button 
+							Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+							Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
+							Content="Process" 
+							HorizontalAlignment="Left" 
+							Margin="0,35,0,0"/>
+						
+					</materialDesign:DialogHost>
+
+					<materialDesign:DialogHost 
+						CloseOnClickAway="True" 
+						Grid.Column="1"
+						HorizontalAlignment="Right">
+						<materialDesign:DialogHost.DialogContent>
+							<StackPanel Margin="16">
+								<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+									<Grid>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto"></RowDefinition>
+											<RowDefinition Height="*"></RowDefinition>
+										</Grid.RowDefinitions>
+										<TextBlock 
+											Grid.Row="0"
+											HorizontalAlignment="Right">
+											Do you want to reset the configuration?
+											<LineBreak></LineBreak>
+										</TextBlock>										
+											
+										<Grid Grid.Row="1">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*"></ColumnDefinition>
+												<ColumnDefinition Width="*"></ColumnDefinition>
+											</Grid.ColumnDefinitions>
+											<Button
+												Grid.Column="1"
+												Style="{StaticResource MaterialDesignFlatButton}"
+												IsCancel="True" 
+												Margin="0 8 8 0" 
+												Command="materialDesign:DialogHost.CloseDialogCommand">
+												CANCEL
+											</Button>
+
+											<Button					
+												Grid.Column="0"
+												Style="{StaticResource MaterialDesignFlatButton}" 
+												IsDefault="True"
+												Margin="0 8 8 0" 
+												Command="materialDesign:DialogHost.CloseDialogCommand">
+												ACCEPT
+											</Button>
+											
+										</Grid>       
+									</Grid>
+									
+								</StackPanel>
+							</StackPanel>
+						</materialDesign:DialogHost.DialogContent>
+
+						<Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+								Style="{StaticResource MaterialDesignRaisedButton}"
+								Content="Cancel" 
+								HorizontalAlignment="Left" 
+								Margin="0,35,0,0" 
+								/>
+					</materialDesign:DialogHost>
+				</Grid>
+			</StackPanel>
+		</StackPanel>
+	</materialDesign:Card>
+
+</Window>
